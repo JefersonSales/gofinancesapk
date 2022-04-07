@@ -1,4 +1,5 @@
 import React from 'react';
+import { Platform } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useTheme } from 'styled-components'
@@ -8,7 +9,6 @@ const { Navigator, Screen } = createBottomTabNavigator();
 
 import { Dashboard } from '../screens/Dashboard';
 import { Register } from '../screens/Register';
-import { Platform } from 'react-native';
 
 export function AppRoutes() {
 
@@ -68,3 +68,8 @@ export function AppRoutes() {
     </Navigator>
   )
 }
+
+export type GoFinancesRoutesList = {
+  Listagem: undefined;
+  Cadastrar: undefined;
+};

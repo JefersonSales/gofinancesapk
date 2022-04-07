@@ -11,17 +11,13 @@ import {
   CategoryName,
   Date
 } from './styles'
-
-interface Category {
-  name: string;
-  icon: string;
-};
+import { categories } from '../../utils/categories';
 
 export interface TransactionsCardProps {
   type: 'positive' | 'negative';
-  title: string;
+  name: string;
   amount: string;
-  category: Category;
+  category: string;
   date: string;
 };
 
@@ -30,9 +26,11 @@ interface Props {
 };
 
 export function TransactionsCard({ data }: Props) {
+  //const category = categories.filter(item => item.key === data.category)[0];
+  const [category] = categories.filter(item => item.key === data.category);
   return (
     <Container>
-      <Title>{data.title}</Title>
+      <Title>{data.name}</Title>
 
       <Amount type={data.type}>
         {data.type === 'negative' && '- '}
@@ -41,8 +39,8 @@ export function TransactionsCard({ data }: Props) {
 
       <Footer>
         <Category>
-          <Icon name={data.category.icon} />
-          <CategoryName>{data.category.name}</CategoryName>
+          <Icon name={category.icon} />
+          <CategoryName>{category.name}</CategoryName>
         </Category>
         <Date>{data.date}</Date>
       </Footer>
